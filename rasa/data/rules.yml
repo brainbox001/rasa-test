@@ -1,0 +1,40 @@
+version: "3.1"
+
+rules:
+- rule: Greet the user
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Recharge airtime
+  steps:
+  - intent: recharge
+  - action: recharge_pin_form
+  - active_loop: recharge_pin_form
+
+- rule: After recharge pin form
+  condition:
+  - active_loop: recharge_pin_form
+  - slot_was_set:
+    - pin_verified: True
+  steps:
+  - action: recharge_pin_form
+  - active_loop: null
+  - action: recharge_form
+  - active_loop: recharge_form
+
+
+- rule: Submit recharge airtime form
+  condition:
+  - active_loop: recharge_form
+  steps:
+  - action: recharge_form
+  - active_loop: null
+  - action: utter_recharge_success
+  - action: action_reset_recharge_form
+  - action: action_reset_pin
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot

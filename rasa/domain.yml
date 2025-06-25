@@ -1,0 +1,115 @@
+version: "3.1"
+
+intents:
+  - greet
+  - recharge
+  - bot_challenge
+
+entities:
+  - amount
+  - network
+  - phone_number
+  - pin
+
+actions:
+  - action_reset_pin
+  - action_reset_recharge_form
+  - validate_recharge_pin_form
+
+slots:
+  amount:
+    type: float
+    mappings:
+      - type: from_entity
+        entity: amount
+        conditions:
+          - active_loop: recharge_form
+            requested_slot: amount
+      - type: from_text
+        conditions:
+          - active_loop: recharge_form
+            requested_slot: amount
+    influence_conversation: true
+
+  network:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: network
+      - type: from_text
+        conditions:
+          - active_loop: recharge_form
+            requested_slot: network
+    influence_conversation: true
+
+  phone_number:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: phone_number
+      - type: from_text
+        conditions:
+          - active_loop: recharge_form
+            requested_slot: phone_number
+
+    influence_conversation: true
+
+  pin:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: pin
+      - type: from_text
+        conditions:
+          - active_loop: recharge_pin_form
+            requested_slot: pin
+    influence_conversation: true
+
+  pin_attempts:
+    type: float
+    initial_value: 0
+    mappings: []
+    influence_conversation: false
+
+  pin_verified:
+    type: bool
+    initial_value: false
+    mappings: []
+    influence_conversation: true
+
+responses:
+  utter_greet:
+    - text: "Hey! How are you?"
+
+  utter_ask_amount:
+    - text: "How much airtime would you like to recharge?"
+
+  utter_ask_network:
+    - text: "Which network would you like to use? (e.g., MTN, Glo, Airtel)"
+
+  utter_ask_phone_number:
+    - text: "Please provide the phone number you want to recharge."
+
+  utter_ask_pin:
+    - text: "Please enter your 4 digit pin."
+
+  utter_recharge_success:
+    - text: "Your recharge of {amount} naira for {network} has been successfully processed."
+
+  utter_iamabot:
+    - text: "I am a bot, powered by Rasa."
+
+forms:
+  recharge_pin_form:
+    required_slots:
+      - pin
+
+  recharge_form:
+    required_slots:
+      - amount
+      - network
+      - phone_number
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

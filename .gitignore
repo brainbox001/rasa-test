@@ -1,0 +1,70 @@
+# Rasa Generated Files and Directories
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Rasa model directory
+# This contains your trained NLU and Core models.
+# These can be very large and are typically regenerated from your data.
+# It's usually best practice not to commit them to Git.
+models/
+
+rasa/models/
+serviceAccountKey.json
+
+# Rasa training data cache
+# Rasa creates a cache for faster training, but it's not needed in Git.
+rasa/.rasa/cache/
+
+# Rasa generated temporary files
+rasa/.rasa/tmp/
+
+# Rasa-generated database (SQLite by default) for tracker store
+# If you're using a file-based tracker store, exclude it.
+# If you're using an external database (e.g., PostgreSQL), this won't apply.
+rasa/*.db
+rasa/rasa.db
+rasa/events.db
+
+# Rasa-generated lock files (for concurrent training/inference)
+rasa/*.lock
+rasa/.lock
+
+# Rasa run/debug files
+rasa/rasa_core.log
+rasa/rasa_nlu.log
+rasa/rasa_x.log
+rasa/debug.log
+rasa/logs/
+
+# Virtual Environment
+# Always exclude your Python virtual environment.
+venv/
+env/
+.venv/
+.env/
+
+# IDE specific files
+.vscode/ # VS Code
+.idea/   # IntelliJ IDEA / PyCharm
+*.sublime-project
+*.sublime-workspace
+*.DS_Store # macOS specific
+Thumbs.db  # Windows specific
+
+# Jupyter Notebook files (if you use them for testing/prototyping)
+.ipynb_checkpoints/
+
+# User-specific configurations (like Rasa X credentials)
+credentials.yml.bak
+endpoints.yml.bak
+
+# Any custom action build artifacts if you're compiling them
+dist/
+build/
+*.egg-info/
+
+# If you have data files that are too large or sensitive to be in Git
+# Example: If you manually download large pre-trained word embeddings
+# data/embeddings/
