@@ -8,13 +8,14 @@ intents:
 entities:
   - amount
   - network
-  - phone_number
   - pin
 
 actions:
   - action_reset_pin
   - action_reset_recharge_form
+  - action_check_balance
   - validate_recharge_pin_form
+  - validate_recharge_form
 
 slots:
   amount:
@@ -25,6 +26,7 @@ slots:
         conditions:
           - active_loop: recharge_form
             requested_slot: amount
+        
       - type: from_text
         conditions:
           - active_loop: recharge_form
@@ -43,15 +45,12 @@ slots:
     influence_conversation: true
 
   phone_number:
-    type: text
+    type: float
     mappings:
-      - type: from_entity
-        entity: phone_number
       - type: from_text
         conditions:
           - active_loop: recharge_form
             requested_slot: phone_number
-
     influence_conversation: true
 
   pin:

@@ -34,6 +34,11 @@ rules:
   - action: action_reset_recharge_form
   - action: action_reset_pin
 
+- rule: Check balance
+  steps:
+  - intent: check_balance
+  - action: action_check_balance
+
 - rule: Say 'I am a bot' anytime the user challenges
   steps:
   - intent: bot_challenge

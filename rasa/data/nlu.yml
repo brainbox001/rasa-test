@@ -1,6 +1,25 @@
 version: "3.1"
 
 nlu:
+- intent: provide_amount
+  examples: |
+    - [#500](amount)
+    - [#1000](amount)
+    - [#2900](amount)
+    - [N1k](amount)
+    - [N2k](amount)
+    - [N30k](amount)
+    - [#600k](amount)
+    - [#3000](amount)
+    - [N20000](amount)
+    - [#15000](amount)
+    - [#7k](amount)
+    - [#50k](amount)
+    - [#10000](amount)
+    - [#22000](amount)
+    - [#25055](amount)
+
+
 - intent: provide_pin
   examples: |
     - [pin-1234](pin)
@@ -8,25 +27,6 @@ nlu:
     - [pin-4321](pin)
     - [pin-8765](pin)
     - [pin-0000](pin)
-
-- intent: provide_phone_number
-  examples: |
-    - [08012345678](phone_number)
-    - [08123456789](phone_number)
-    - [09012345678](phone_number)
-    - [07012345678](phone_number)
-
-- intent: provide_amount
-  examples: |
-    - [500](amount)
-    - [1000](amount)
-    - [2900](amount)
-    - [6000](amount)
-    - [3000](amount)
-    - [20000](amount)
-    - [1500](amount)
-    - [2500000](amount)
-    - [100000](amount)
 
 - intent: provide_network
   examples: |
@@ -52,28 +52,23 @@ nlu:
     - good afternoon
 - intent: recharge
   examples: |
-    - Buy [500](amount) [mtn](network) airtime for me
-    - Recharge [1000](amount) [glo](network) for me
-    - Buy [500](amount) [airtel](network) airtime for me
-    - Recharge [airtel](network) [1000](amount) for me
-    - Recharge my [mtn](network) line with [2000](amount)
-    - Recharge my [glo](network) line with [500](amount)
-    - Recharge my [airtel](network) line with [1000](amount)
-    - Recharge my line with [500](amount) naira
-    - [mtn](network) airtme [200](amount) please
-    - [glo](network) airtime [1000](amount) please
-    - [airtel](network) airtime [500](amount) please
-    - Buy [mtn](network) airtime for [08012345678](phone_number)
-    - Recharge [glo](network) for [08012345678](phone_number)
-    - Recharge [airtel](network) for [08012345678](phone_number)
-    - Recharge [08012345678](phone_number) with [500](amount) naira
-    - Recharge [08012345678](phone_number) with [1000](amount)
-    - Recharge [08012345678](phone_number) with [500](amount) naira
+    - I need [mtn](network) airtime
+    - I need [glo](network) airtime
+    - I need [airtel](network) airtime
+    - I need [9mobile](network) airtime
     - I want to recharge
     - I want to buy airtime
     - I want to recharge my phone
     - I want to recharge my line
     - I want to buy airtime for my phone
+
+- intent: check_balance
+  examples: |
+    - check my balance
+    - what is my balance?
+    - how much is my balance?
+    - can you check my balance?
+    - show me my balance
 
 - intent: bot_challenge
   examples: |
