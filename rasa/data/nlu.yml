@@ -1,39 +1,13 @@
 version: "3.1"
 
 nlu:
-- intent: provide_amount
-  examples: |
-    - [#500](amount)
-    - [#1000](amount)
-    - [#2900](amount)
-    - [N1k](amount)
-    - [N2k](amount)
-    - [N30k](amount)
-    - [#600k](amount)
-    - [#3000](amount)
-    - [N20000](amount)
-    - [#15000](amount)
-    - [#7k](amount)
-    - [#50k](amount)
-    - [#10000](amount)
-    - [#22000](amount)
-    - [#25055](amount)
-
-
 - intent: provide_pin
   examples: |
-    - [pin-1234](pin)
-    - [pin-5678](pin)
-    - [pin-4321](pin)
-    - [pin-8765](pin)
-    - [pin-0000](pin)
-
-- intent: provide_network
-  examples: |
-    - [mtn](network)
-    - [glo](network)
-    - [airtel](network)
-    - [9mobile](network)
+    - [1234](pin)
+    - [5678](pin)
+    - [4321](pin)
+    - [8765](pin)
+    - [0000](pin)
 
 - intent: greet
   examples: |
@@ -52,10 +26,23 @@ nlu:
     - good afternoon
 - intent: recharge
   examples: |
-    - I need [mtn](network) airtime
+    - I need [mtn](network) airtime for [850](amount)
+    - Buy [#500](amount) [mtn](network) airtime for me
+    - Buy [#200](amount) [glo](network) airtime for me
+    - Buy me [#10040](amount) [airtel](network)
+    - Buy me [300](amount) [9mobile](network)
+    - I need [600](airtime) for [08165972334](phone_number)
     - I need [glo](network) airtime
     - I need [airtel](network) airtime
     - I need [9mobile](network) airtime
+    - I need [mtn](network) airtime for [1k](amount)
+    - Recharge [2k](amount) [9mobile](network) for [09023856773](phone_number)
+    - I want to buy [#50k](amount) [airtel](network) for [07065238712](phone_number)
+    - Recharge [09128345690](phone_number) with [13000](amount) [9mobile](network)
+    - Buy [200000](amount) [mtn](network) for [08035533474](phone_number)
+    - Can you recharge [N500](amount) [glo](network) airtime for [09124895271](phone_number)
+    - I want to recharge [500](amount) airtime for [09012356781](phone_number)
+    - Please recharge [airtel](network) [N700](amount) for [07024812569](phone_number)
     - I want to recharge
     - I want to buy airtime
     - I want to recharge my phone
@@ -69,6 +56,13 @@ nlu:
     - how much is my balance?
     - can you check my balance?
     - show me my balance
+
+- intent: send_money
+  examples: |
+    - send money to [John](name)
+    - transfer money to [Jane](name)
+    - I want to send money to [Alice](name)
+    - I want to transfer money to [Bob](name)
 
 - intent: bot_challenge
   examples: |

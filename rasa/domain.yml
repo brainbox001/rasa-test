@@ -23,9 +23,6 @@ slots:
     mappings:
       - type: from_entity
         entity: amount
-        conditions:
-          - active_loop: recharge_form
-            requested_slot: amount
         
       - type: from_text
         conditions:
@@ -47,6 +44,9 @@ slots:
   phone_number:
     type: float
     mappings:
+      - type: from_entity
+        entity: phone_number
+
       - type: from_text
         conditions:
           - active_loop: recharge_form
@@ -93,7 +93,7 @@ responses:
     - text: "Please enter your 4 digit pin."
 
   utter_recharge_success:
-    - text: "Your recharge of {amount} naira for {network} has been successfully processed."
+    - text: "Your recharge of {amount} naira {network} for {phone_number} has been successfully processed."
 
   utter_iamabot:
     - text: "I am a bot, powered by Rasa."
